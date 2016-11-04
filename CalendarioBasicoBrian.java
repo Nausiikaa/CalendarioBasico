@@ -5,7 +5,7 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class CalendarioBasico
+public class CalendarioBasicoBrian
 {
     // Guarda el valor del atributo dia
     private int dia;
@@ -17,7 +17,7 @@ public class CalendarioBasico
     /**
      * Constructor for objects of class CalendarioBasico
      */
-    public CalendarioBasico()
+    public CalendarioBasicoBrian()
     {
         dia = 01;
         mes = 01;
@@ -31,4 +31,20 @@ public class CalendarioBasico
         año = year;
     
     }
+    public void avanzarDia()
+    {
+        if(dia >= 30){
+            dia = 01;
+            mes = mes + 1;
+                if(mes >=12){
+                    mes = 01;
+                    año = año + 1;
+                }
+        }
+        else{
+            dia = dia + 1;
+        
+        }
+    }
 }
+
