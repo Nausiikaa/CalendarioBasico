@@ -8,43 +8,42 @@
 public class CalendarioBasicoBrian
 {
     // Guarda el valor del atributo dia
-    private int dia;
+    private DisplayDosDigitos dia;
     // Guarda el valor del atributo mes
-    private int mes;
+    private DisplayDosDigitos mes;
     // Guarda el valor del atributo año
-    private int año;
+    private DisplayDosDigitos año;
 
     /**
      * Constructor for objects of class CalendarioBasico
      */
     public CalendarioBasicoBrian()
     {
-        dia = 01;
-        mes = 01;
-        año = 01;
-        
+      dia = new DisplayDosDigitos(31);
+      mes = new DisplayDosDigitos(13);
+      año = new DisplayDosDigitos(100);
     }
-    public void introducirFecha(int day,int month,int year)
+    public void fijarFecha(int day,int month,int year)
     {
-        dia = day;
-        mes = month;
-        año = year;
-    
+        dia.setValor(day);
+        mes.setValor(month);
+        año.setValor(year);
     }
     public void avanzarDia()
     {
-        if(dia >= 30){
-            dia = 01;
-            mes = mes + 1;
-                if(mes >=12){
-                    mes = 01;
-                    año = año + 1;
-                }
+        dia.incrementaValor();
+        if(dia.getValor() == 1){
+            //Si estamos aqui es que hay que hacer avanzar al mes
+            mes.incrementaValor();
+            if(mes.getValor() == 1){
+                //Si estamos aqui hay que hacer cambiar el año
+                año.incrementaValor();
+            }
         }
-        else{
-            dia = dia + 1;
-        
-        }
+    }
+    public String mostrarFecha()
+    {
+        return dia.getValorDelDisplay() + "-" + mes.getValorDelDisplay() + "-" + año.getValorDelDisplay();
     }
 }
 
